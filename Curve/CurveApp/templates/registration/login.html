@@ -1,0 +1,41 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'CurveApp/bootstrap/css/bootstrap.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'CurveApp/style/loginstyle.css' %}">
+        <title>Log In - Curve</title>
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7"></div>
+            <div class="col-sm-5" style="padding-top: 80px">
+                <div class="card">
+                    <div class="card card-header">
+                        <h4> Log In to Curve</h4>    
+                    </div>
+                    <div class="card-body">    
+                        <form class="form-control" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" name="uid" placeholder="eg. jayjay01">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password" placeholder="**********">
+                            </div>
+                            <div class="form-group">
+                                <center><input type="submit" name="submit" class="btn btn-success"></center>
+                            </div>
+                        </form>
+                    </div>   
+                    <div class="card-footer">
+                        <p>Not yet registered? Sign up from <a href="{% url 'CurveApp:signup' %}">here</a></p>
+                    </div>
+                </div>    
+            </div>
+        </div>    
+    </div>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+/*
+    Project : Curve Music Player
+    Author : Karanja James
+*/
+#navbar {
+    opacity: 70%;
+    border-style: hidden;
+}
+
+body {
+    background-image: url('../images/img3.jpg');
+    background-attachment: fixed;
+
+}
+
+.nav-link:hover {
+    background-color : #10474E;
+}
+
+.nav-link:active {
+    background-color : #10474E;
+}
+
+section {
+    overflow: hidden;
+    position: relative;
+
+}
+
+#nav-main {
+    background-image: url("../images/img3.jpg")
+}
+
+h1, h6, h3 {
+    font-size: 20px;
+    text-align: center;
+    color: #10474E;
+    font-family: cursive;
+}
+
+
+p {
+    font-family: cursive;
+    color: darkblue;
+    font-size: 15px
+}
+
+.albumicon {
+    align-content: center;
+    background-color: #10474E;
+    margin: 15px;
+    opacity: 0.5;
+}
+
+.albumicon:hover {
+    opacity: 0.9;
+}
+
+#detail-row {
+    border-left: solid;
+    border-top: solid;
+    border-right: solid;
+    border-color: #68AC7B;
+
+}
+
+#album-cover {
+    background-color: #68AC7B;
+    opacity: 0.9;
+    padding-right: 10px;
+}
+
+.footer {
+    color: #715E1A;
+    font-family: cursive;
+}
+
+.genre-list {
+    color: darkblue;
+}
+
+.col-md-10 {
+    border-radius: 20px;
+}

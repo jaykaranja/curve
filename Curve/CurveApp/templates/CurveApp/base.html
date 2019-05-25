@@ -1,0 +1,59 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'CurveApp/bootstrap/css/bootstrap.css' %}"> 
+        <link rel="stylesheet" type="text/css" href="{% static 'CurveApp/style/style.css' %}"> 
+        <link rel="stylesheet" type="text/css" href="{% static 'CurveApp/style/font-awesome.min.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'CurveApp/style/bootnav.css' %}">
+
+        
+    </head>
+    <body>
+ 
+    <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" id="nav-main">
+        <i class="fa fa-music" style="color: #35A25E;"></i> &nbsp;
+        &nbsp; <a class="navbar-brand" href="{% url 'CurveApp:index' %}" style="font-family: cursive; color: #35A25E"><strong>Curve</strong></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'CurveApp:index' %}" style="color: #35A25E">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'CurveApp:create-album' %}" style="color: #35A25E"> Add Album</a>
+              </li>      
+              <li class="nav-item">
+                <a class="nav-link disabled" href="{% url 'CurveApp:profile' request.user.id%}" style="color: #35A25E"> Hello {{ request.user.username}}</a>
+              </li>
+            </ul>
+              <ul class="navbar-nav mr-sm-2">  
+                <li class="nav-item dropdown">
+                <a style="color: #35A25E" class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
+                  Profile
+                
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+                    </a>    
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" style="color: #35A25E" href="{% url 'CurveApp:logout' %}">Log Out</a>    
+              </li>      
+              </ul>    
+            </div>
+        </nav>
+
+        <div class="container" style="background-color: white">
+        {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

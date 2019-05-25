@@ -1,0 +1,27 @@
+{% extends 'CurveApp/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}{% if object %}Update {{ object.album_name}}{% else %}Add Album{% endif %}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>{% if object %}Update {{ object.album_name }}{% else %}Add Album{% endif %}</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                    </div>  
+                    <hr>
+                    <div class="form-group">
+                        <center><button class="btn btn-success" type="submit" name="submit"><i class="fa fa-plus"></i> {% if object %}Update {{ object.album_name }}{% else %}Add Album{% endif %}</button></center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

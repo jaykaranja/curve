@@ -1,0 +1,63 @@
+{% extends 'CurveApp/base.html' %}
+{% block title %}{{ album.album_name }}{% endblock %}
+{% block content %}
+<div class="container">
+<div class="row" id="detail-row" style="padding-top: 15px">
+    <div class="col-md-3">
+        <div class="card card-success">
+            <div class="card-header">
+                <div class="thumbnail">
+                    <img src="{{ album.album_cover.url }}" class="img img-responsive img-rounded" style="height: 150px; width: 150px; border-radius: 150px;">
+                </div>
+            </div>
+            <div class="card-body">
+                <i class="fa fa-microphone"></i>&nbsp; <p>{{ album.album_name }}</p>
+                <i class="fa fa-user-circle"></i>&nbsp; <p>{{ album.album_artist }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="panel panel-default">
+                {% if message %}
+                    <div class="alert alert-{{msgtype}}">
+                    <h6 class="text-{{msgtype}} text-center">{{ message }}</h6>
+                    </div>
+                {% endif %}
+            <div class="panel panel-header">
+                <div class="para1"> 
+                <p>This is the album "{{album.album_name}}" by {{album.album_artist}}. It has {% if album.song_set.count == 0 %}no songs{%else%}{{album.song_set.count}} songs{% endif %}.</p>
+                </div> 
+                {% if album.user.username == request.user.username %}
+                <div class="">
+                    <a class="btn btn-info" href="{% url 'CurveApp:create-song' album.id %}"><i class="fa fa-add"></i> Add song </a>
+                </div>
+                {% endif %}
+            </div><br>
+            <div class="panel panel-body">
+               
+                <table class="table">
+                    <thead>
+                        <th>Name</th>
+                        <th>Artist</th>
+                        <th>Action</th>
+                    </thead>
+                    {% if album.song_set %}
+                    {% for song in album.song_set.all %}
+                    <tr>
+                        <td style="color: darkblue;">{{song.song_name}}</td>
+                        <td style="color: darkblue;">{{song.song_artist}}</td>
+                        <td><a href="{{song.song.url}}" class="btn btn-primary btn-sm"><i class="fa fa-download"></i></a> &nbsp;{% if album.user.username == request.user.username %} <a href="{% url 'CurveApp:delete-song' album.id song.id %}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>{% endif%}</td>
+                    </tr>
+                
+                    {% endfor %}
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="footer">
+
+</div>
+{% endblock %}

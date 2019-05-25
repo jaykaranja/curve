@@ -1,0 +1,36 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<html>
+    <head>
+        <title>Sign Up | Curve</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'CurveApp/bootstrap/css/bootstrap.css' %}">
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="padding-top: 50px">
+                <div class="panel panel-default">
+                    <div class="panel panel-header">
+                        <h5><center>Sign Up</center></h5>
+                    </div>
+                    <hr>
+                    <div class="panel panel-body">
+                         <form class="form-control" method="POST">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                             <hr> 
+                             <p>By clicking the submit button, you agree to our <a href="">terms and conditions</a> that are set by Curve Inc.</p>
+                             <div class="form-group">
+                             <center><input type="submit" name="submit" class="btn btn-success" style="width:50%;"></center>
+                             </div>
+                         </form>
+                    <div class="panel panel-footer">
+                        <p>Are you already registered? <a href="{% url 'CurveApp:login' %}">Log In</a></p>
+                        &copy; Curve Inc. 2019
+                    </div>    
+                    </div>
+                </div>
+            </div>    
+        </div>    
+    </body>
+</html>

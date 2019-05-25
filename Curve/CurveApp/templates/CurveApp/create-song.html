@@ -1,0 +1,31 @@
+{% extends 'CurveApp/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Add Song to {{ album.album_name }}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">
+                {% if album %}
+                {% for album in album %}
+                <h4>Add song to {{ album.album_name }}</h4>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                    </div>  
+                    <hr>
+                    <div class="form-group">
+                        <center><button class="btn btn-success" type="submit" name="submit"><i class="fa fa-plus"></i> Add song</button></center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
