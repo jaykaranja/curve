@@ -37,7 +37,7 @@
     <div class="col-md-10" style="border-radius: 10px"> 
         {% if message %}
        <div class="alert alert-{{msgtype}}">
-            <h6 class="text-{{msgtype}} text-center">{{ message }}</h6>
+            <h6 class="text-{{msgtype}} text-center">{% if head %}{{head}} {{ request.user.username}}.{% endif %} {{ message }}</h6>
         </div>    
         {% endif %}
         <div class="row">    

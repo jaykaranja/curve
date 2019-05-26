@@ -20,7 +20,10 @@ def signup(request):
         if user is not None:
             login(request, user)
             context = {
-                'message' : 'Welcome' ,
+                'user' : user,
+                'head' : 'Welcome',
+                'message' : 'You can add some albums to your page.' ,
+                'msgtype' : 'success',
             }
             return render(request, 'CurveApp/index.html', context)
             
